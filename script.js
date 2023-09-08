@@ -1,5 +1,8 @@
 // Assignment code here
-
+function generatePassword() {
+  var numCharacters = prompt("How Many Characters In Your Password?")
+  console.log(numCharacters);
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
