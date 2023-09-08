@@ -5,10 +5,11 @@ function generatePassword() {
   var numericCharacters = "1,2,3,4,5,6,7,8,9,0,"
   var specialCharacters = "!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,',<,>,?,/,"
   const bigAndSmallLetters = bigLetters.split(',');
-  var select1;
+  var select1 = "";
   console.log(bigAndSmallLetters);
   var numCharacters = prompt("How Many Characters In Your Password?")
   console.log(numCharacters);
+
   if (numCharacters<8 || numCharacters>128){
     alert("You need to choose between 8 and 128 characters in your password");
     return;
@@ -17,11 +18,19 @@ function generatePassword() {
   var yesUppCase = confirm("Would you like upper case letters in your password?");
   var yesNumbers = confirm("Would you like numbers in your password?");
   var yesSpecial = confirm("Would you like special characters in your password?");
-  console.log(yesLowCase, yesUppCase, yesNumbers, yesSpecial);
-  if (yesLowCase===true) { select1 += lowLetters};
-  if (yesUppCase===true) { select1 += bigLetters};
-  if (yesNumbers===true) { select1 += numericCharacters};
-  if (yesSpecial===true) { select1 += specialCharacters};
+
+  var yesAndNO =[yesLowCase, yesUppCase, yesNumbers, yesSpecial];
+  var combinedCharacterArray = [lowLetters, bigLetters, numericCharacters, specialCharacters]
+
+  for (let k=0; k < yesAndNO.length; k++)
+    {
+      if (yesAndNO[k]){
+        select1 += combinedCharacterArray[k];
+        console.log(select1);
+      }
+      
+    }
+
   var select2 = (select1.split(','));
   select2.pop();
   console.log(select2);
