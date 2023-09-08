@@ -5,12 +5,12 @@ function generatePassword() {
   var numericCharacters = "1,2,3,4,5,6,7,8,9,0,"
   var specialCharacters = "!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,',<,>,?,/,"
   const bigAndSmallLetters = bigLetters.split(',');
-  var select1 = "" ;
+  var select1;
   console.log(bigAndSmallLetters);
   var numCharacters = prompt("How Many Characters In Your Password?")
   console.log(numCharacters);
-  if (numCharacters<8){
-    alert("You need at least 8 characters in your password");
+  if (numCharacters<8 || numCharacters>128){
+    alert("You need to choose between 8 and 128 characters in your password");
     return;
   }
   var yesLowCase = confirm("Would you like lower case letters in your password?");
@@ -18,10 +18,22 @@ function generatePassword() {
   var yesNumbers = confirm("Would you like numbers in your password?");
   var yesSpecial = confirm("Would you like special characters in your password?");
   console.log(yesLowCase, yesUppCase, yesNumbers, yesSpecial);
-  if (yesLowCase===true) { select1 += lowLetters};  
+  if (yesLowCase===true) { select1 += lowLetters};
+  if (yesUppCase===true) { select1 += bigLetters};
+  if (yesNumbers===true) { select1 += numericCharacters};
+  if (yesSpecial===true) { select1 += specialCharacters};
   var select2 = (select1.split(','));
+  select2.pop();
   console.log(select2);
-  
+  var randomNum = 0;
+  var passwordArray = [];
+  for (i=0; i<numCharacters;i++) {
+    randomNum = Math.floor(Math.random()*select2.length);
+    passwordArray.push(select2[randomNum])
+  }
+  console.log(passwordArray);
+  var passwordString = passwordArray.join('');
+  return passwordString;
 
 }
 
