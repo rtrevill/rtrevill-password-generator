@@ -1,7 +1,28 @@
 // Assignment code here
 function generatePassword() {
+  var lowLetters = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,";
+  var bigLetters = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,";
+  var numericCharacters = "1,2,3,4,5,6,7,8,9,0,"
+  var specialCharacters = "!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,',<,>,?,/,"
+  const bigAndSmallLetters = bigLetters.split(',');
+  var select1 = "" ;
+  console.log(bigAndSmallLetters);
   var numCharacters = prompt("How Many Characters In Your Password?")
   console.log(numCharacters);
+  if (numCharacters<8){
+    alert("You need at least 8 characters in your password");
+    return;
+  }
+  var yesLowCase = confirm("Would you like lower case letters in your password?");
+  var yesUppCase = confirm("Would you like upper case letters in your password?");
+  var yesNumbers = confirm("Would you like numbers in your password?");
+  var yesSpecial = confirm("Would you like special characters in your password?");
+  console.log(yesLowCase, yesUppCase, yesNumbers, yesSpecial);
+  if (yesLowCase===true) { select1 += lowLetters};  
+  var select2 = (select1.split(','));
+  console.log(select2);
+  
+
 }
 
 // Get references to the #generate element
