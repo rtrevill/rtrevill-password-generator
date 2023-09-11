@@ -4,20 +4,17 @@ function generatePassword() {
   var bigLetters = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,";
   var numericCharacters = "1,2,3,4,5,6,7,8,9,0,"
   var specialCharacters = "!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,',<,>,?,/,"
-  const bigAndSmallLetters = bigLetters.split(',');
-  var select1 = "";
-  console.log(bigAndSmallLetters);
+  var selection = "";
   var numCharacters = prompt("How many characters would you like in your password?")
-  console.log(numCharacters);
 
   if (numCharacters<8 || numCharacters>128){
     alert("You need to choose between 8 and 128 characters in your password");
-    return;
+    return "";
   }
-  var yesLowCase = confirm("Would you like lower case letters in your password?");
-  var yesUppCase = confirm("Would you like upper case letters in your password?");
-  var yesNumbers = confirm("Would you like numbers in your password?");
-  var yesSpecial = confirm("Would you like special characters in your password?");
+  var yesLowCase = confirm("Would you like lower case letters in your password? ");
+  var yesUppCase = confirm("Would you like upper case letters in your password? ");
+  var yesNumbers = confirm("Would you like numbers in your password? ");
+  var yesSpecial = confirm("Would you like special characters in your password? ");
 
   var yesAndNO =[yesLowCase, yesUppCase, yesNumbers, yesSpecial];
   var combinedCharacterArray = [lowLetters, bigLetters, numericCharacters, specialCharacters]
@@ -25,25 +22,19 @@ function generatePassword() {
   for (let k=0; k < yesAndNO.length; k++)
     {
       if (yesAndNO[k]){
-        select1 += combinedCharacterArray[k];
-        console.log(select1);
+        selection += combinedCharacterArray[k];
       }
-      
     }
 
-  var select2 = (select1.split(','));
-  select2.pop();
-  console.log(select2);
-  var randomNum = 0;
+  var selectionArray = (selection.split(','));
+  selectionArray.pop();
   var passwordArray = [];
   for (i=0; i<numCharacters;i++) {
-    randomNum = Math.floor(Math.random()*select2.length);
-    passwordArray.push(select2[randomNum])
+    var randomNum = Math.floor(Math.random()*selectionArray.length);
+    passwordArray.push(selectionArray[randomNum])
   }
-  console.log(passwordArray);
   var passwordString = passwordArray.join('');
   return passwordString;
-
 }
 
 // Get references to the #generate element
