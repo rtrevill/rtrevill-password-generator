@@ -11,9 +11,10 @@ function generatePassword() {
     alert("You need to choose between 8 and 128 characters in your password");
     return "";
   }
+  do {
   var yesLowCase = confirm("Would you like lower case letters in your password? ");
   var yesUppCase = confirm("Would you like upper case letters in your password? ");
-  var yesNumbers = confirm("Would you like numbers in your password? ");
+  var yesNumbers = confirm("Would you like numeric characters in your password? ");
   var yesSpecial = confirm("Would you like special characters in your password? ");
 
   var yesAndNO =[yesLowCase, yesUppCase, yesNumbers, yesSpecial];
@@ -25,6 +26,10 @@ function generatePassword() {
         selection += combinedCharacterArray[k];
       }
     }
+    if (selection===""){
+      alert("At least one data type must be selected");
+    };
+  }while (selection==="");
 
   var selectionArray = (selection.split(','));
   selectionArray.pop();
