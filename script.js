@@ -7,7 +7,7 @@ function generatePassword() {
   const bigAndSmallLetters = bigLetters.split(',');
   var select1 = "";
   console.log(bigAndSmallLetters);
-  var numCharacters = prompt("How Many Characters In Your Password?")
+  var numCharacters = prompt("How many characters would you like in your password?")
   console.log(numCharacters);
 
   if (numCharacters<8 || numCharacters>128){
